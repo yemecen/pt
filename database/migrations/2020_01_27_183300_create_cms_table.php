@@ -16,15 +16,23 @@ class CreateCmsTable extends Migration
         Schema::create('cms', function (Blueprint $table) {
             $table->Increments('ID');
             $table->string('Title', 250);
-            $table->integer('ResponsibleUserID');
+            $table->unsignedBigInteger('UserID')->unsigned();
+            $table->integer('ResponsibleUserID')->unsigned();
             $table->text('Description', 250);
-            $table->integer('TypeID');
-            $table->integer('SystemID');
-            $table->integer('SubSystemID');
-            $table->integer('LevelID');
-            $table->integer('PrecedenceID');
+            $table->integer('TypeID')->unsigned();
+            $table->integer('SystemID')->unsigned();
+            $table->integer('SubSystemID')->unsigned();
+            $table->integer('LevelID')->unsigned();
+            $table->integer('PrecedenceID')->unsigned();
             $table->string('Mail', 250);
             $table->timestamps();
+
+            $table->foreign('UserID')->references('id')->on('users');
+            $table->foreign('TypeID')->references('ID')->on('types');
+            $table->foreign('SystemID')->references('ID')->on('systems');
+            $table->foreign('SubSystemID')->references('ID')->on('sub_systems');
+            $table->foreign('LevelID')->references('ID')->on('levels');
+            $table->foreign('PrecedenceID')->references('ID')->on('precedences');
         });
     }
 

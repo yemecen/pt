@@ -15,8 +15,11 @@ class CreateAdditionalsTable extends Migration
     {
         Schema::create('additionals', function (Blueprint $table) {
             $table->Increments('ID');
-            $table->integer('Cm_ID');
+            $table->integer('CmID')->unsigned();
             $table->string('FileName',250);
+
+            $table->foreign('CmID')->references('ID')->on('Cms');
+            
         });
     }
 

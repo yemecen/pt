@@ -15,8 +15,11 @@ class CreateSubSystemsTable extends Migration
     {
         Schema::create('sub_systems', function (Blueprint $table) {
             $table->Increments('ID');
-            $table->integer('SystemID');
+            $table->integer('SystemID')->unsigned();
             $table->string('Name', 100);
+
+            $table->foreign('SystemID')->references('ID')->on('systems');
+            
         });
     }
 

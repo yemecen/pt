@@ -15,8 +15,12 @@ class CreateUserAuthorizationsTable extends Migration
     {
         Schema::create('user_authorizations', function (Blueprint $table) {
             $table->Increments('ID');
-            $table->integer('UserID');
-            $table->integer('AuthorizationID');
+            $table->unsignedBigInteger('UserID');
+            $table->unsignedInteger('AuthorizationID');
+
+            $table->foreign('UserID')->references('id')->on('users');
+            $table->foreign('AuthorizationID')->references('ID')->on('authorizations');
+            
         });
     }
 
