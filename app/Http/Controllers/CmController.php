@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cm;
+use App\Type;
+use App\System;
+use App\SubSystem;
+use App\Level;
+use App\Precedence;
 
 class CmController extends Controller
 {
@@ -26,7 +31,13 @@ class CmController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        $systems = System::all();
+        $subSystems = SubSystem::all();
+        $levels = Level::all();
+        $precedences = Precedence::all();
+                
+        return view('cm.create',compact('types','systems','subSystems','levels','precedences'));
     }
 
     /**
@@ -37,7 +48,35 @@ class CmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$request->validate([
+            'tip' => 'required',            
+            'sistem' => 'required',            
+            'altSistem' => 'required',            
+            'baslik' => 'required',            
+            'onemDerecesi' => 'required',            
+            'oncelik' => 'required',            
+            'aciklama' => 'required',                        
+        ]);*/
+
+        //dd($request->tip);
+        
+        //Cm::create($request->all());
+        
+        //return redirect()->route('cm.index')->with('success','Cm oluşturuldu');
+        
+        $cm = new Cm;
+        $cm->Title = $request->baslik;
+        $cm->UserID = 1;
+        $cm->Description = $request->aciklama;
+        $cm->TypeID = $request->tip;
+        $cm->SystemID = $request->sistem;
+        $cm->SubSystemID = $request->altSistem;
+        $cm->LevelID = $request->onemDerecesi;
+        $cm->PrecedenceID = $request->oncelik;
+        
+        $cm->save();
+
+        return redirect()->route('cms.index');
     }
 
     /**

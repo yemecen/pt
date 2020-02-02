@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cms()
+    {
+
+        return $this->hasMany(Cm::class,'UserID');
+
+    }
+    public function authorizations()
+    {
+
+        return $this->belongsToMany(Authorization::class,'user_authorizations');
+
+    }
 }

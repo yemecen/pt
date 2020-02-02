@@ -19,16 +19,16 @@
     <tbody>
         @foreach ($cms as $cm)
             <tr>
-                <td>B</td>
+                <td>(!)Tip)</td>
                 <th scope="row">{{$cm->ID}}</th>
                 <td>{{$cm->Title}}</td>
-                <td>25-01-2020</td>
-                <td>14:00</td>
-                <td>yemecen</td>
-                <td>Satın Alma</td>
-                <td>Fikri</td>
-                <td><span class="badge badge-info">Normal</span></td>
-                <td><span class="badge badge-secondary">Açık</span></td>
+                <td>{{$cm->created_at}}</td>
+                <td>(!)14:00</td>
+                <td>{{$cm->user->name}}</td>
+                <td>{{$cm->subsystem->Name}}</td>
+                <td>(!)Fikri</td>
+                <td><span class="badge badge-{{$cm->precedence->Badge}}">{{$cm->precedence->Name}}</span></td>
+                <td><span class="badge badge-secondary">(!)Açık</span></td>
             </tr> 
         @endforeach  
     </tbody>
