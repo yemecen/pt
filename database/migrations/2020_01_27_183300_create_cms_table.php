@@ -24,6 +24,7 @@ class CreateCmsTable extends Migration
             $table->integer('SubSystemID')->unsigned();
             $table->integer('LevelID')->unsigned();
             $table->integer('PrecedenceID')->unsigned();
+            $table->integer('StatID')->unsigned();
             $table->string('Mail', 250)->nullable();
             $table->timestamps();
 
@@ -33,6 +34,7 @@ class CreateCmsTable extends Migration
             $table->foreign('SubSystemID')->references('ID')->on('sub_systems');
             $table->foreign('LevelID')->references('ID')->on('levels');
             $table->foreign('PrecedenceID')->references('ID')->on('precedences');
+            $table->foreign('StatID')->references('ID')->on('stats');
         });
     }
 

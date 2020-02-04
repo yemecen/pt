@@ -16,10 +16,17 @@ class Cm extends Model
     public function type()
     {
 
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class,'TypeID');
 
     }
 
+    public function stat()
+    {
+
+        return $this->belongsTo(Stat::class,'StatID');
+
+    }
+    
     public function level()
     {
 

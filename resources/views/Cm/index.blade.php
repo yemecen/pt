@@ -8,7 +8,7 @@
         <th scope="col">No</th>
         <th scope="col">Başlık</th>
         <th scope="col">Oluş. Tarihi</th>
-        <th scope="col">Zaman</th>
+        <!--<th scope="col">Zaman</th>!-->
         <th scope="col">Oluşturan</th>
         <th scope="col">Modül</th>
         <th scope="col">Sorumlu</th>
@@ -19,16 +19,16 @@
     <tbody>
         @foreach ($cms as $cm)
             <tr>
-                <td>(!)Tip)</td>
+                <td>{{$cm->type->Name}}</td>
                 <th scope="row">{{$cm->ID}}</th>
                 <td>{{$cm->Title}}</td>
-                <td>{{$cm->created_at}}</td>
-                <td>(!)14:00</td>
+                <td>{{$cm->created_at->format('d-m-Y')}}</td>
+                <!--<td>{{--$cm->created_at->format('H:i:s')--}}</td>!-->
                 <td>{{$cm->user->name}}</td>
                 <td>{{$cm->subsystem->Name}}</td>
                 <td>(!)Fikri</td>
                 <td><span class="badge badge-{{$cm->precedence->Badge}}">{{$cm->precedence->Name}}</span></td>
-                <td><span class="badge badge-secondary">(!)Açık</span></td>
+            <td><span class="badge badge-{{$cm->stat->Badge}}">{{$cm->stat->Name}}</span></td>
             </tr> 
         @endforeach  
     </tbody>

@@ -73,7 +73,7 @@ class CmController extends Controller
         $cm->SubSystemID = $request->altSistem;
         $cm->LevelID = $request->onemDerecesi;
         $cm->PrecedenceID = $request->oncelik;
-        
+        $cm->StatID = 1;
         $cm->save();
 
         return redirect()->route('cms.index');

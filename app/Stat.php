@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class Stat extends Model
 {
     public function cms()
 
     {
 
-        return $this->hasMany(Cm::class,'TypeID');
+        return $this->hasMany(Cm::class,'StatID');
 
     }
 }

@@ -4,13 +4,13 @@
         @include('layouts.partials.head')
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid ">
             @include('layouts.partials.navbar')
 
             <div class="row">
                 @include('layouts.partials.sidebar')       
             
-                <div class="col-md-9">
+                <div class="col-md-10">
 
                     @yield('content')
                     

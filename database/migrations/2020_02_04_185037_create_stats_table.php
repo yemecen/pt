@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrecedencesTable extends Migration
+class CreateStatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePrecedencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('precedences', function (Blueprint $table) {
+        Schema::create('stats', function (Blueprint $table) {
             $table->Increments('ID');
             $table->string('Name', 100);
             $table->string('Badge', 50);
@@ -27,6 +27,6 @@ class CreatePrecedencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('precedences');
+        Schema::dropIfExists('stats');
     }
 }
