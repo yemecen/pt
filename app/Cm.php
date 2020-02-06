@@ -13,6 +13,13 @@ class Cm extends Model
 
     }
 
+    public function cmDetails()
+    {
+
+        return $this->hasMany(CmDetail::class,'CmID');
+
+    }
+
     public function type()
     {
 

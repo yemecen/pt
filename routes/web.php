@@ -14,4 +14,6 @@ Route::get('/','CmController@index');
 
 Route::resource('cms','CmController');
 
+//Route::get('cm/{cm}/detail','CmDetailController@index')->name('cm.index');
+
 Auth::routes();

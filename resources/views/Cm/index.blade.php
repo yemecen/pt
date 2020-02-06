@@ -20,7 +20,8 @@
         @foreach ($cms as $cm)
             <tr>
                 <td>{{$cm->type->Name}}</td>
-                <th scope="row">{{$cm->ID}}</th>
+                <!--<th scope="row"><a href="cm/{{--$cm->ID}}/detail">{{$cm->ID--}}</a></th>!-->
+                <th scope="row"><a href="{{ route('cms.show',$cm->ID) }}">{{$cm->ID}}</a></th>                
                 <td>{{$cm->Title}}</td>
                 <td>{{$cm->created_at->format('d-m-Y')}}</td>
                 <!--<td>{{--$cm->created_at->format('H:i:s')--}}</td>!-->

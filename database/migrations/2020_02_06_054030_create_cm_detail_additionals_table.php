@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatsTable extends Migration
+class CreateCmDetailAdditionalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateStatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stats', function (Blueprint $table) {
+        Schema::create('cm_detail_additionals', function (Blueprint $table) {
             $table->Increments('ID');
-            $table->string('Name', 100);
-            $table->string('Badge', 50);
+            $table->integer('CmDetailID')->unsigned();
+            $table->string('FileName',250);
+
+            $table->foreign('CmDetailID')->references('ID')->on('cm_details');
         });
     }
 
@@ -27,6 +29,6 @@ class CreateStatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stats');
+        Schema::dropIfExists('cm_detail_additionals');
     }
 }

@@ -11,11 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for cm
-CREATE DATABASE IF NOT EXISTS `cm` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_turkish_ci */;
-USE `cm`;
-
 -- Dumping structure for table cm.additionals
 CREATE TABLE IF NOT EXISTS `additionals` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -77,21 +72,78 @@ CREATE TABLE IF NOT EXISTS `cms` (
 -- Dumping data for table cm.cms: ~14 rows (approximately)
 /*!40000 ALTER TABLE `cms` DISABLE KEYS */;
 INSERT INTO `cms` (`ID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, `TypeID`, `SystemID`, `SubSystemID`, `LevelID`, `PrecedenceID`, `StatID`, `Mail`, `created_at`, `updated_at`) VALUES
-	(1, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 22:59:54', '2020-02-04 22:59:55'),
-	(2, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 22:59:57', '2020-02-04 22:59:56'),
-	(3, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 3, NULL, '2020-02-04 22:59:58', '2020-02-04 22:59:59'),
-	(4, 'Modül Hata', 1, NULL, 'Açıklama', 2, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:00', '2020-02-04 23:00:00'),
-	(5, 'Modül Hata', 1, NULL, 'Açıklama', 2, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(22, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(23, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(24, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(25, 'Modül Hata', 1, NULL, 'Açıklama', 2, 1, 1, 1, 1, 2, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(26, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(27, 'Modül Hata', 1, NULL, 'Açıklama', 2, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(28, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
-	(29, 'Modül Hata', 1, NULL, 'Açıklama', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(1, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 22:59:54', '2020-02-04 22:59:55'),
+	(2, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 22:59:57', '2020-02-04 22:59:56'),
+	(3, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 3, NULL, '2020-02-04 22:59:58', '2020-02-04 22:59:59'),
+	(4, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 2, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:00', '2020-02-04 23:00:00'),
+	(5, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 2, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(22, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(23, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(24, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(25, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 2, 1, 1, 1, 1, 2, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(26, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(27, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 2, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(28, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
+	(29, 'Modül Hata', 1, NULL, 'Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960\'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.', 1, 1, 1, 1, 1, 1, NULL, '2020-02-04 23:00:20', '2020-02-04 23:00:01'),
 	(32, 'Test Başlık', 1, NULL, 'Test Açıklama', 2, 1, 2, 2, 2, 1, NULL, '2020-02-04 20:16:04', '2020-02-04 20:16:04');
 /*!40000 ALTER TABLE `cms` ENABLE KEYS */;
+
+-- Dumping structure for table cm.cm_details
+CREATE TABLE IF NOT EXISTS `cm_details` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `CmID` int(10) unsigned NOT NULL,
+  `Title` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `UserID` bigint(20) unsigned NOT NULL,
+  `ResponsibleUserID` int(10) unsigned DEFAULT NULL,
+  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TypeID` int(10) unsigned NOT NULL,
+  `SystemID` int(10) unsigned NOT NULL,
+  `SubSystemID` int(10) unsigned NOT NULL,
+  `LevelID` int(10) unsigned NOT NULL,
+  `PrecedenceID` int(10) unsigned NOT NULL,
+  `StatID` int(10) unsigned NOT NULL,
+  `Mail` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `cm_details_cmid_foreign` (`CmID`),
+  KEY `cm_details_userid_foreign` (`UserID`),
+  KEY `cm_details_typeid_foreign` (`TypeID`),
+  KEY `cm_details_systemid_foreign` (`SystemID`),
+  KEY `cm_details_subsystemid_foreign` (`SubSystemID`),
+  KEY `cm_details_levelid_foreign` (`LevelID`),
+  KEY `cm_details_precedenceid_foreign` (`PrecedenceID`),
+  KEY `cm_details_statid_foreign` (`StatID`),
+  CONSTRAINT `cm_details_cmid_foreign` FOREIGN KEY (`CmID`) REFERENCES `cms` (`ID`),
+  CONSTRAINT `cm_details_levelid_foreign` FOREIGN KEY (`LevelID`) REFERENCES `levels` (`ID`),
+  CONSTRAINT `cm_details_precedenceid_foreign` FOREIGN KEY (`PrecedenceID`) REFERENCES `precedences` (`ID`),
+  CONSTRAINT `cm_details_statid_foreign` FOREIGN KEY (`StatID`) REFERENCES `stats` (`ID`),
+  CONSTRAINT `cm_details_subsystemid_foreign` FOREIGN KEY (`SubSystemID`) REFERENCES `sub_systems` (`ID`),
+  CONSTRAINT `cm_details_systemid_foreign` FOREIGN KEY (`SystemID`) REFERENCES `systems` (`ID`),
+  CONSTRAINT `cm_details_typeid_foreign` FOREIGN KEY (`TypeID`) REFERENCES `types` (`ID`),
+  CONSTRAINT `cm_details_userid_foreign` FOREIGN KEY (`UserID`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table cm.cm_details: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cm_details` DISABLE KEYS */;
+INSERT INTO `cm_details` (`ID`, `CmID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, `TypeID`, `SystemID`, `SubSystemID`, `LevelID`, `PrecedenceID`, `StatID`, `Mail`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'detay', 1, NULL, 'detay', 2, 1, 1, 1, 1, 1, NULL, NULL, NULL),
+	(2, 1, 'detay', 1, NULL, 'detay', 2, 1, 1, 1, 1, 1, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `cm_details` ENABLE KEYS */;
+
+-- Dumping structure for table cm.cm_detail_additionals
+CREATE TABLE IF NOT EXISTS `cm_detail_additionals` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `CmDetailID` int(10) unsigned NOT NULL,
+  `FileName` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `cm_detail_additionals_cmdetailid_foreign` (`CmDetailID`),
+  CONSTRAINT `cm_detail_additionals_cmdetailid_foreign` FOREIGN KEY (`CmDetailID`) REFERENCES `cm_details` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table cm.cm_detail_additionals: ~0 rows (approximately)
+/*!40000 ALTER TABLE `cm_detail_additionals` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cm_detail_additionals` ENABLE KEYS */;
 
 -- Dumping structure for table cm.levels
 CREATE TABLE IF NOT EXISTS `levels` (
@@ -113,9 +165,9 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.migrations: ~12 rows (approximately)
+-- Dumping data for table cm.migrations: ~14 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(45, '2014_10_12_000000_create_users_table', 1),
@@ -129,7 +181,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(53, '2020_01_27_183317_create_additionals_table', 1),
 	(54, '2020_01_27_183356_create_authorizations_table', 1),
 	(55, '2020_01_27_183421_create_user_authorizations_table', 1),
-	(56, '2020_02_04_185037_create_stats_table', 1);
+	(56, '2020_02_04_185037_create_stats_table', 1),
+	(57, '2020_02_06_053946_create_cm_details_table', 2),
+	(58, '2020_02_06_054030_create_cm_detail_additionals_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table cm.password_resets
@@ -235,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.users: ~2 rows (approximately)
+-- Dumping data for table cm.users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'Yazılım Destek', 'y.emecen@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', NULL, '2020-02-05 22:56:01', '2020-02-05 22:56:03');

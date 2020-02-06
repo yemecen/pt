@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cm;
+use App\CmDetail;
 use App\Type;
 use App\System;
 use App\SubSystem;
@@ -97,7 +98,18 @@ class CmController extends Controller
      */
     public function show($id)
     {
-        //
+        $cm = Cm::find($id);
+        
+        //$cmDetail = CmDetail::all(); //where('CmID',$cm->ID);
+        //echo $cm->ID;
+        //dd($cmDetail);
+        /*echo "<pre>";
+        foreach ($cmDetail as $item) {
+            print_r($item);
+        }
+        echo "</pre>";*/
+        //return view('cm.show',compact('cm','cmDetail'));
+        return view('cm.show',compact('cm'));
     }
 
     /**

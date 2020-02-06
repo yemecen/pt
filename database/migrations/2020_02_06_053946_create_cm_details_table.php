@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCmsTable extends Migration
+class CreateCmDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateCmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms', function (Blueprint $table) {
-            $table->Increments('ID')->unsigned();
+        Schema::create('cm_details', function (Blueprint $table) {
+            $table->Increments('ID');
+            $table->unsignedInteger('CmID')->unsigned();
             $table->string('Title', 250);
             $table->unsignedBigInteger('UserID')->unsigned();
             $table->integer('ResponsibleUserID')->unsigned()->nullable();
@@ -28,6 +29,7 @@ class CreateCmsTable extends Migration
             $table->string('Mail', 250)->nullable();
             $table->timestamps();
 
+            $table->foreign('CmID')->references('ID')->on('cms');
             $table->foreign('UserID')->references('id')->on('users');
             $table->foreign('TypeID')->references('ID')->on('types');
             $table->foreign('SystemID')->references('ID')->on('systems');
@@ -45,6 +47,6 @@ class CreateCmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cms');
+        Schema::dropIfExists('cm_details');
     }
 }
