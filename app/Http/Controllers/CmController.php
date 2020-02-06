@@ -100,16 +100,15 @@ class CmController extends Controller
     {
         $cm = Cm::find($id);
         
-        //$cmDetail = CmDetail::all(); //where('CmID',$cm->ID);
-        //echo $cm->ID;
-        //dd($cmDetail);
-        /*echo "<pre>";
-        foreach ($cmDetail as $item) {
-            print_r($item);
-        }
-        echo "</pre>";*/
-        //return view('cm.show',compact('cm','cmDetail'));
-        return view('cm.show',compact('cm'));
+        $cmDetail = CmDetail::where('CmID',$cm->ID)->get();
+
+        $types = Type::all();
+        $systems = System::all();
+        $subSystems = SubSystem::all();
+        $levels = Level::all();
+        $precedences = Precedence::all();
+      
+        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences'));
     }
 
     /**
