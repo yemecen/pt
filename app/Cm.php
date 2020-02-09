@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cm extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'ID','Title', 'UserID', 'ResponsibleUserID','Description','TypeID','SystemID','LevelID','PrecedenceID','StatID','Mail'
+    ];
+
     public function additionals()
     {
 

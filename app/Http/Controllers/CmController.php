@@ -10,6 +10,8 @@ use App\System;
 use App\SubSystem;
 use App\Level;
 use App\Precedence;
+use App\User;
+use App\Stat;
 
 class CmController extends Controller
 {
@@ -31,7 +33,7 @@ class CmController extends Controller
     public function index()
     {
         $cms = Cm::all();
-
+        
         return view('cm.index', compact('cms'));
     }
 
@@ -47,8 +49,9 @@ class CmController extends Controller
         $subSystems = SubSystem::all();
         $levels = Level::all();
         $precedences = Precedence::all();
-                
-        return view('cm.create',compact('types','systems','subSystems','levels','precedences'));
+        $users = User::all();
+    
+        return view('cm.create',compact('types','systems','subSystems','levels','precedences','users'));
     }
 
     /**
@@ -58,26 +61,11 @@ class CmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        /*$request->validate([
-            'tip' => 'required',            
-            'sistem' => 'required',            
-            'altSistem' => 'required',            
-            'baslik' => 'required',            
-            'onemDerecesi' => 'required',            
-            'oncelik' => 'required',            
-            'aciklama' => 'required',                        
-        ]);*/
-
-        //dd($request->tip);
-        
-        //Cm::create($request->all());
-        
-        //return redirect()->route('cm.index')->with('success','Cm oluşturuldu');
-        
+    {        
         $cm = new Cm;
         $cm->Title = $request->baslik;
-        $cm->UserID = 1;
+        $cm->UserID = $request->userID;
+        $cm->ResponsibleUserID = $request->sorumlu;
         $cm->Description = $request->aciklama;
         $cm->TypeID = $request->tip;
         $cm->SystemID = $request->sistem;
@@ -100,15 +88,17 @@ class CmController extends Controller
     {
         $cm = Cm::find($id);
         
-        $cmDetail = CmDetail::where('CmID',$cm->ID)->get();
+        $cmDetail = CmDetail::where('CmID',$cm->ID)->orderBy('ID', 'DESC')->get();
 
         $types = Type::all();
         $systems = System::all();
         $subSystems = SubSystem::all();
         $levels = Level::all();
         $precedences = Precedence::all();
+        $users = User::all();
+        $stats = Stat::all();
       
-        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences'));
+        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences','users','stats'));
     }
 
     /**
@@ -143,5 +133,13 @@ class CmController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $search = "%".$request->search."%";
+        $cms = Cm::where('Title', 'like', $search)->get();
+        
+        return view('cm.index', compact('cms'));
     }
 }

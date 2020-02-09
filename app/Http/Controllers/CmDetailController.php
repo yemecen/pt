@@ -36,7 +36,25 @@ class CmDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cmDetail = new CmDetail;
+        $cmDetail->CmID = $request->cmID;
+        $cmDetail->Title = $request->baslik;
+        $cmDetail->UserID = $request->userID;
+        $cmDetail->ResponsibleUserID = $request->sorumlu;
+        $cmDetail->Description = $request->aciklama;
+        $cmDetail->TypeID = $request->tip;
+        $cmDetail->SystemID = $request->sistem;
+        $cmDetail->SubSystemID = $request->altSistem;
+        $cmDetail->LevelID = $request->onemDerecesi;
+        $cmDetail->PrecedenceID = $request->oncelik;
+        $cmDetail->StatID = 1;
+        $cmDetail->save();
+        
+        $Cmdata = array('ResponsibleUserID' => $request->sorumlu,'StatID' => $request->durum);
+
+        Cm::whereId($request->cmID)->update($Cmdata);
+        
+        return redirect()->route('cms.show',$request->cmID);
     }
 
     /**

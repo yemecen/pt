@@ -2,18 +2,10 @@
 
 @section('content')
 {{--Form--}}
-<form action="{{ route('cms.store') }}" method="POST" >            
-       
-    @if ($errors->any())
-    <div class="alert alert-danger">
-      <ul>
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-      </ul>
-    </div><br />
-    @endif
-    
+<form action="{{ route('cmDetail.store')}}" method="POST" >            
+    <input type="hidden" id="cmID" name="cmID" value="{{$cm->ID}}">     
+    <input type="hidden" id="userID" name="userID" value="{{Auth::user()->id}}">     
+
     <div class="form-row">              
       <div class="form-group col-md-4">
         <label for="tip">Tip</label>
@@ -68,8 +60,22 @@
         <div class="form-group col-md-4">
           <label for="sorumlu">Sorumlu</label>
           <select id="sorumlu" class="form-control" name="sorumlu">
+            @foreach ($users as $user)
+            <option value="{{$user->id}}" {{ $user->id == $cm->ResponsibleUserID ? 'selected' : '' }}>{{$user->name}}</option>              
+            @endforeach
           </select>
         </div>              
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="durum">Durum</label>
+        <select id="durum" class="form-control" name="durum">
+          @foreach ($stats as $stat)
+            <option value="{{$stat->ID}}" {{ $stat->ID == $cm->StatID ? 'selected' : '' }}>{{$stat->Name}}</option>              
+          @endforeach
+        </select>
+      </div>    
     </div>
 
     <div class="form-group">
@@ -95,23 +101,7 @@
     </div>
 
 </form>
-{{--Form--}}
-<hr>
-{{--Cm--}}
-<h1>{{$cm->Title}}</h1>
-    <p>{{$cm->Description}}</p>
-    <img src="{{URL::asset('/img/cm-1.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>
-    <img src="{{URL::asset('/img/cm-2.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block">
-    <div>
-        <span class="badge badge-pill badge-secondary">{{$cm->created_at->format('d-m-Y')}}</span>
-        <div class="float-right">
-            <span class="badge badge-primary">story</span> 
-            <span class="badge badge-success">blog</span> 
-            <span class="badge badge-info">personal</span> 
-            <span class="badge badge-warning">Warning</span>
-            <span class="badge badge-danger">Danger</span>
-        </div>         
-    </div>
+{{--//Form--}}
 <hr>
 {{--Cm detay var ise--}}
 @if (!empty($cmDetail))
@@ -123,14 +113,29 @@
         <div>
             <span class="badge badge-pill badge-secondary">{{$item->created_at->format('d-m-Y')}}</span>
             <div class="float-right">
-                <span class="badge badge-primary">story</span> 
-                <span class="badge badge-success">blog</span> 
-                <span class="badge badge-info">personal</span> 
-                <span class="badge badge-warning">Warning</span>
-                <span class="badge badge-danger">Danger</span>
+                <span class="badge badge-info">{{$cm->type->Name}}</span> 
+                <span class="badge badge-{{$cm->stat->Badge}}">{{$cm->stat->Name}}</span> 
+                <span class="badge badge-info">{{$cm->subsystem->Name}}</span> 
+                <span class="badge badge-{{$cm->precedence->Badge}}">{{$cm->precedence->Name}}</span>
             </div>         
         </div>
         <hr>
     @endforeach
 @endif
+{{--Cm--}}
+<h1>{{$cm->Title}}</h1>
+    <p>{{$cm->Description}}</p>
+    <img src="{{URL::asset('/img/cm-1.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>
+    <img src="{{URL::asset('/img/cm-2.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block">
+    <div>
+        <span class="badge badge-pill badge-secondary">{{$cm->created_at->format('d-m-Y')}}</span>
+        <div class="float-right">
+          <span class="badge badge-info">{{$cm->type->Name}}</span> 
+          <span class="badge badge-{{$cm->stat->Badge}}">{{$cm->stat->Name}}</span> 
+          <span class="badge badge-info">{{$cm->subsystem->Name}}</span> 
+          <span class="badge badge-{{$cm->precedence->Badge}}">{{$cm->precedence->Name}}</span>
+        </div>         
+    </div>
+<hr>
+
 @endsection

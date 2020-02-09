@@ -12,9 +12,10 @@
                         </form>
                     @endif                
             </a>
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Cm ID veya başlık..." aria-label="Search">
+            <form class="form-inline" method="POST" action="{{ route('cms.search') }}">
+              <input class="form-control mr-sm-2" type="search" placeholder="Cm ID veya başlık..." aria-label="Search" id="search" name="search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ara</button>
+                @csrf
             </form>
         </nav>
     </div>

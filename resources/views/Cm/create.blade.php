@@ -2,7 +2,8 @@
 
 @section('content')
 <form action="{{ route('cms.store') }}" method="POST" >            
-       
+    <input type="hidden" id="userID" name="userID" value="{{Auth::user()->id}}">     
+   
     @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -67,6 +68,9 @@
         <div class="form-group col-md-4">
           <label for="sorumlu">Sorumlu</label>
           <select id="sorumlu" class="form-control" name="sorumlu">
+            @foreach ($users as $user)
+            <option value="{{$user->id}}" {{ $user->id == Auth::user()->id ? 'selected' : '' }}>{{$user->name}}</option>              
+            @endforeach
           </select>
         </div>              
     </div>
