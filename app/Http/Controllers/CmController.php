@@ -136,9 +136,8 @@ class CmController extends Controller
     }
 
     public function search(Request $request)
-    {
-        $search = "%".$request->search."%";
-        $cms = Cm::where('Title', 'like', $search)->get();
+    {      
+        $cms = is_numeric($request->search) ? Cm::where('ID','=',(int)$request->search)->get() : Cm::where('Title', 'like', "%".$request->search."%")->get();
         
         return view('cm.index', compact('cms'));
     }
