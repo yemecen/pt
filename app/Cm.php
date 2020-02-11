@@ -18,7 +18,7 @@ class Cm extends Model
     public function additionals()
     {
 
-        return $this->hasMany(Additional::class);
+        return $this->hasMany(Additional::class,'CmID');
 
     }
 

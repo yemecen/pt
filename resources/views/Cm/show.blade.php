@@ -125,8 +125,9 @@
 {{--Cm--}}
 <h1>{{$cm->Title}}</h1>
     <p>{{$cm->Description}}</p>
-    <img src="{{URL::asset('/img/cm-1.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>
-    <img src="{{URL::asset('/img/cm-2.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block">
+    @foreach ($additionals as $img)  
+        <img src="{{ URL::asset('img/'.$img->FileName.'') }}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>
+    @endforeach   
     <div>
         <span class="badge badge-pill badge-secondary">{{$cm->created_at->format('d-m-Y')}}</span>
         <div class="float-right">

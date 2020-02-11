@@ -12,6 +12,7 @@ use App\Level;
 use App\Precedence;
 use App\User;
 use App\Stat;
+use App\Additional;
 
 class CmController extends Controller
 {
@@ -73,23 +74,28 @@ class CmController extends Controller
         $cm->LevelID = $request->onemDerecesi;
         $cm->PrecedenceID = $request->oncelik;
         $cm->StatID = 1;
-        //$cm->save();
+        $cm->save();
 
         if ($request->hasFile('image')) {
         
             $files = $request->file('image');
         
             foreach($files as $file){
+                
                 $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
                 $fileName = str_random(5)."-".date('his')."-".str_random(3).".".$extension;
                 $destinationPath = 'img/';
                 $file->move($destinationPath, $fileName);
+
+                $additional = new Additional;
+                $additional->CmID = $cm->id;
+                $additional->FileName = $fileName;
+                $additional->save();
             }
         }
-        dd($files);
         
-        //return redirect()->route('cms.index');
+        return redirect()->route('cms.index');
     }
 
     /**
@@ -111,8 +117,9 @@ class CmController extends Controller
         $precedences = Precedence::all();
         $users = User::all();
         $stats = Stat::all();
-      
-        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences','users','stats'));
+        $additionals = Additional::where('CmID',$cm->ID)->get();
+
+        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences','users','stats','additionals'));
     }
 
     /**
