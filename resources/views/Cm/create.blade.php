@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<form action="{{ route('cms.store') }}" method="POST" >            
+<form action="{{ route('cms.store') }}" method="POST" enctype="multipart/form-data">            
     <input type="hidden" id="userID" name="userID" value="{{Auth::user()->id}}">     
    
     @if ($errors->any())
@@ -83,8 +83,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile" name="file">
-                <label class="custom-file-label" for="customFile">Dosya Seçiniz...</label>
+                <input type="file" class="custom-file-input" id="image" name="image[]" multiple>
+                <label class="custom-file-label" for="image">Dosya Seçiniz...</label>
             </div> 
         </div>
         @csrf

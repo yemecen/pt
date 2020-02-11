@@ -73,9 +73,23 @@ class CmController extends Controller
         $cm->LevelID = $request->onemDerecesi;
         $cm->PrecedenceID = $request->oncelik;
         $cm->StatID = 1;
-        $cm->save();
+        //$cm->save();
 
-        return redirect()->route('cms.index');
+        if ($request->hasFile('image')) {
+        
+            $files = $request->file('image');
+        
+            foreach($files as $file){
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $fileName = str_random(5)."-".date('his')."-".str_random(3).".".$extension;
+                $destinationPath = 'img/';
+                $file->move($destinationPath, $fileName);
+            }
+        }
+        dd($files);
+        
+        //return redirect()->route('cms.index');
     }
 
     /**
