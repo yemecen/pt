@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cm;
 use App\CmDetail;
+use App\CmDetailAdditional;
 
 class CmDetailController extends Controller
 {
@@ -49,11 +50,32 @@ class CmDetailController extends Controller
         $cmDetail->PrecedenceID = $request->oncelik;
         $cmDetail->StatID = 1;
         $cmDetail->save();
+
+        if ($request->hasFile('image')) {
         
+            $files = $request->file('image');
+        
+            foreach($files as $file){
+                
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $fileName = str_random(5)."-".date('his')."-".str_random(3).".".$extension;
+                $destinationPath = 'cmFiles/';
+                $file->move($destinationPath, $fileName);
+
+                $cmDetailAdditional = new CmDetailAdditional;
+                $cmDetailAdditional->CmDetailID = $cmDetail->id;
+                $cmDetailAdditional->FileName = $fileName;
+                $cmDetailAdditional->save();
+            }
+        }
+
+        //
         $Cmdata = array('ResponsibleUserID' => $request->sorumlu,'StatID' => $request->durum);
 
         Cm::whereId($request->cmID)->update($Cmdata);
-        
+        //
+
         return redirect()->route('cms.show',$request->cmID);
     }
 

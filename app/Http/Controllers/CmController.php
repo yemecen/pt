@@ -13,6 +13,8 @@ use App\Precedence;
 use App\User;
 use App\Stat;
 use App\Additional;
+use App\CmDetailAdditional;
+
 
 class CmController extends Controller
 {
@@ -85,7 +87,7 @@ class CmController extends Controller
                 $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
                 $fileName = str_random(5)."-".date('his')."-".str_random(3).".".$extension;
-                $destinationPath = 'img/';
+                $destinationPath = 'cmFiles/';
                 $file->move($destinationPath, $fileName);
 
                 $additional = new Additional;
@@ -104,12 +106,11 @@ class CmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     public function show($id)
     {
         $cm = Cm::find($id);
         
-        $cmDetail = CmDetail::where('CmID',$cm->ID)->orderBy('ID', 'DESC')->get();
-
+        $cmDetail = CmDetail::where('CmID',$cm->ID)->orderBy('ID', 'DESC')->get();//
         $types = Type::all();
         $systems = System::all();
         $subSystems = SubSystem::all();
@@ -118,8 +119,8 @@ class CmController extends Controller
         $users = User::all();
         $stats = Stat::all();
         $additionals = Additional::where('CmID',$cm->ID)->get();
-
-        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences','users','stats','additionals'));
+        
+        return view('cm.show',compact('cm','cmDetail','types','systems','subSystems','levels','precedences','users','stats','additionals','cmDetailAdditional'));
     }
 
     /**

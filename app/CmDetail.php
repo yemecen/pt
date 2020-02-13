@@ -12,4 +12,10 @@ class CmDetail extends Model
         return $this->belongsTo(Cm::class,'CmID');
 
     }
+    public function additionals()
+    {
+
+        return $this->hasMany(CmDetailAdditional::class,'CmDetailID','ID');
+
+    }
 }

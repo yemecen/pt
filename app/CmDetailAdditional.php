@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class CmDetailAdditional extends Model
 {
+    public $timestamps = false;
+
     public function cmdetail()
 
     {
 
-        return $this->belongsto(CmDetail::class);
+        return $this->belongsTo(CmDetail::class,'CmDetailID','ID');
 
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 {{--Form--}}
-<form action="{{ route('cmDetail.store')}}" method="POST" >            
+<form action="{{ route('cmDetail.store')}}" method="POST" enctype="multipart/form-data">            
     <input type="hidden" id="cmID" name="cmID" value="{{$cm->ID}}">     
     <input type="hidden" id="userID" name="userID" value="{{Auth::user()->id}}">     
 
@@ -86,8 +86,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile" name="file">
-                <label class="custom-file-label" for="customFile">Dosya Seçiniz...</label>
+              <input type="file" class="custom-file-input" id="image" name="image[]" multiple>
+              <label class="custom-file-label" for="image">Dosya Seçiniz...</label>
             </div> 
         </div>
         @csrf
@@ -106,10 +106,22 @@
 {{--Cm detay var ise--}}
 @if (!empty($cmDetail))
     @foreach ($cmDetail as $item)
-        <h1>{{$item->Title}}</h1>
-        <p>{{$item->Description}}</p>
-        <img src="{{URL::asset('/img/cm-1.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>
-        <img src="{{URL::asset('/img/cm-2.png')}}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block">
+    <h1>{{$item->Title}}</h1>
+    <p>{{$item->Description}}</p>
+    {{--Cm Detail dosya ekleri png değilse--}}    
+    @foreach ($item->additionals as $file)
+        @if (pathinfo($file->FileName, PATHINFO_EXTENSION) != "png")
+      Dosya Eki : <a href="{{ URL::asset('cmFiles/'.$file->FileName.'') }}">{{$file->FileName}}</a><br>         
+        @endif
+    @endforeach
+    <hr>
+    {{--Cm Detail dosya ekleri png ise--}}
+    @foreach ($item->additionals as $file)
+        @if (pathinfo($file->FileName, PATHINFO_EXTENSION) == "png")
+          <img src="{{ URL::asset('cmFiles/'.$file->FileName.'') }}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>   
+        @endif
+    @endforeach   
+
         <div>
             <span class="badge badge-pill badge-secondary">{{$item->created_at->format('d-m-Y')}}</span>
             <div class="float-right">
@@ -122,21 +134,33 @@
         <hr>
     @endforeach
 @endif
+
 {{--Cm--}}
 <h1>{{$cm->Title}}</h1>
-    <p>{{$cm->Description}}</p>
-    @foreach ($additionals as $img)  
-        <img src="{{ URL::asset('img/'.$img->FileName.'') }}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>
-    @endforeach   
-    <div>
-        <span class="badge badge-pill badge-secondary">{{$cm->created_at->format('d-m-Y')}}</span>
-        <div class="float-right">
-          <span class="badge badge-info">{{$cm->type->Name}}</span> 
-          <span class="badge badge-{{$cm->stat->Badge}}">{{$cm->stat->Name}}</span> 
-          <span class="badge badge-info">{{$cm->subsystem->Name}}</span> 
-          <span class="badge badge-{{$cm->precedence->Badge}}">{{$cm->precedence->Name}}</span>
-        </div>         
-    </div>
+<p>{{$cm->Description}}</p>
+{{--Cm dosya ekleri png değilse--}}    
+@foreach ($additionals as $file)
+    @if (pathinfo($file->FileName, PATHINFO_EXTENSION) != "png")
+      Dosya Eki : <a href="{{ URL::asset('cmFiles/'.$file->FileName.'') }}">{{$file->FileName}}</a><br>         
+    @endif
+@endforeach
+<hr>
+{{--Cm dosya ekleri png ise--}}
+@foreach ($additionals as $file)
+    @if (pathinfo($file->FileName, PATHINFO_EXTENSION) == "png")
+      <img src="{{ URL::asset('cmFiles/'.$file->FileName.'') }}" alt="" class="img-fluid img-thumbnail rounded mx-auto d-block"><br>   
+    @endif
+@endforeach   
+
+<div>
+    <span class="badge badge-pill badge-secondary">{{$cm->created_at->format('d-m-Y')}}</span>
+    <div class="float-right">
+      <span class="badge badge-info">{{$cm->type->Name}}</span> 
+      <span class="badge badge-{{$cm->stat->Badge}}">{{$cm->stat->Name}}</span> 
+      <span class="badge badge-info">{{$cm->subsystem->Name}}</span> 
+      <span class="badge badge-{{$cm->precedence->Badge}}">{{$cm->precedence->Name}}</span>
+    </div>         
+</div>
 <hr>
 
 @endsection
