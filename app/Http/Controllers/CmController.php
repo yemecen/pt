@@ -14,7 +14,7 @@ use App\User;
 use App\Stat;
 use App\Additional;
 use App\CmDetailAdditional;
-
+use Illuminate\Support\Facades\Auth;
 
 class CmController extends Controller
 {
@@ -110,7 +110,7 @@ class CmController extends Controller
     {
         $cm = Cm::find($id);
         
-        $cmDetail = CmDetail::where('CmID',$cm->ID)->orderBy('ID', 'DESC')->get();//
+        $cmDetail = CmDetail::where('CmID',$cm->ID)->orderBy('ID', 'DESC')->get();
         $types = Type::all();
         $systems = System::all();
         $subSystems = SubSystem::all();
@@ -160,6 +160,20 @@ class CmController extends Controller
     public function search(Request $request)
     {      
         $cms = is_numeric($request->search) ? Cm::where('ID','=',(int)$request->search)->get() : Cm::where('Title', 'like', "%".$request->search."%")->get();
+        
+        return view('cm.index', compact('cms'));
+    }
+    
+    public function open()
+    {      
+        $cms = Cm::where('ResponsibleUserID','=',Auth::user()->id)->where('StatID','<>',2)->get();
+        
+        return view('cm.index', compact('cms'));
+    }
+    
+    public function close()
+    {      
+        $cms = Cm::where('ResponsibleUserID','=',Auth::user()->id)->where('StatID','=',2)->get();
         
         return view('cm.index', compact('cms'));
     }

@@ -110,7 +110,7 @@
     <p>{{$item->Description}}</p>
     {{--Cm Detail dosya ekleri png değilse--}}    
     @foreach ($item->additionals as $file)
-        @if (in_array(pathinfo($file->FileName, PATHINFO_EXTENSION), array("PDF","pdf","txt","TXT","xls","XLS","doc","DOC","docx","docx","xlsx","XLSx")))
+        @if (in_array(pathinfo($file->FileName, PATHINFO_EXTENSION), array("PDF","pdf","txt","TXT","xls","XLS","doc","DOC","docx","docx","xlsx","XLSx","html","sql","SQL")))
       Dosya Eki : <a href="{{ URL::asset('cmFiles/'.$file->FileName.'') }}">{{$file->FileName}}</a><br>         
         @endif
     @endforeach
@@ -140,7 +140,7 @@
 <p>{{$cm->Description}}</p>
 {{--Cm dosya ekleri png değilse--}}    
 @foreach ($additionals as $file)
-    @if (in_array(pathinfo($file->FileName, PATHINFO_EXTENSION), array("PDF","pdf","txt","TXT","xls","XLS","doc","DOC","docx","docx","xlsx","XLSx")))
+    @if (in_array(pathinfo($file->FileName, PATHINFO_EXTENSION), array("PDF","pdf","txt","TXT","xls","XLS","doc","DOC","docx","docx","xlsx","XLSx","html")))
       Dosya Eki : <a href="{{ URL::asset('cmFiles/'.$file->FileName.'') }}">{{$file->FileName}}</a><br>         
     @endif
 @endforeach

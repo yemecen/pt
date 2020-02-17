@@ -15,6 +15,8 @@ Route::get('/','CmController@index');
 Route::resource('cms','CmController');
 
 Route::any('/cms/search','CmController@search')->name('cms.search');
+Route::get('/cm/close','CmController@close')->name('cms.close');
+Route::get('/cm/open','CmController@open')->name('cms.open');
 
 Route::resource('cmDetail','CmDetailController');
 
