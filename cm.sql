@@ -11,6 +11,11 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for cm
+CREATE DATABASE IF NOT EXISTS `cm` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_turkish_ci */;
+USE `cm`;
+
 -- Dumping structure for table cm.additionals
 CREATE TABLE IF NOT EXISTS `additionals` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -19,10 +24,15 @@ CREATE TABLE IF NOT EXISTS `additionals` (
   PRIMARY KEY (`ID`),
   KEY `additionals_cmid_foreign` (`CmID`),
   CONSTRAINT `additionals_cmid_foreign` FOREIGN KEY (`CmID`) REFERENCES `cms` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.additionals: ~7 rows (approximately)
+-- Dumping data for table cm.additionals: ~4 rows (approximately)
 /*!40000 ALTER TABLE `additionals` DISABLE KEYS */;
+INSERT INTO `additionals` (`ID`, `CmID`, `FileName`) VALUES
+	(24, 54, 'I1pnW-114204-GiR.html'),
+	(25, 54, 'sU9fN-114204-lm1.png'),
+	(26, 57, 'ISYle-071726-Mym.html'),
+	(27, 57, 'tjn0W-071726-9Vp.png');
 /*!40000 ALTER TABLE `additionals` ENABLE KEYS */;
 
 -- Dumping structure for table cm.authorizations
@@ -60,10 +70,15 @@ CREATE TABLE IF NOT EXISTS `cms` (
   KEY `cms_levelid_foreign` (`LevelID`),
   KEY `cms_precedenceid_foreign` (`PrecedenceID`),
   KEY `cms_statid_foreign` (`StatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.cms: ~7 rows (approximately)
+-- Dumping data for table cm.cms: ~4 rows (approximately)
 /*!40000 ALTER TABLE `cms` DISABLE KEYS */;
+INSERT INTO `cms` (`ID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, `TypeID`, `SystemID`, `SubSystemID`, `LevelID`, `PrecedenceID`, `StatID`, `Mail`, `created_at`, `updated_at`) VALUES
+	(54, 'test', 1, 1, 'test', 1, 1, 1, 1, 1, 2, NULL, '2020-02-16 11:42:04', '2020-02-16 11:46:11'),
+	(55, 'test 2', 1, 1, 'test 2', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 11:44:54', '2020-02-16 11:44:54'),
+	(56, 'test 3', 1, 4, 'test 3', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 14:34:10', '2020-02-16 14:34:10'),
+	(57, 'sfsafsf', 1, 3, 'asfasfasdfsd', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 19:17:26', '2020-02-16 19:18:06');
 /*!40000 ALTER TABLE `cms` ENABLE KEYS */;
 
 -- Dumping structure for table cm.cm_details
@@ -100,10 +115,13 @@ CREATE TABLE IF NOT EXISTS `cm_details` (
   CONSTRAINT `cm_details_systemid_foreign` FOREIGN KEY (`SystemID`) REFERENCES `systems` (`ID`),
   CONSTRAINT `cm_details_typeid_foreign` FOREIGN KEY (`TypeID`) REFERENCES `types` (`ID`),
   CONSTRAINT `cm_details_userid_foreign` FOREIGN KEY (`UserID`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.cm_details: ~4 rows (approximately)
+-- Dumping data for table cm.cm_details: ~2 rows (approximately)
 /*!40000 ALTER TABLE `cm_details` DISABLE KEYS */;
+INSERT INTO `cm_details` (`ID`, `CmID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, `TypeID`, `SystemID`, `SubSystemID`, `LevelID`, `PrecedenceID`, `StatID`, `Mail`, `created_at`, `updated_at`) VALUES
+	(8, 54, 'eben', 1, 1, 'kapandı', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 11:46:11', '2020-02-16 11:46:11'),
+	(9, 57, 'xzcvxcvxcvxc', 1, 3, 'xzvxzcvzxcv', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 19:18:06', '2020-02-16 19:18:06');
 /*!40000 ALTER TABLE `cm_details` ENABLE KEYS */;
 
 -- Dumping structure for table cm.cm_detail_additionals
@@ -114,10 +132,15 @@ CREATE TABLE IF NOT EXISTS `cm_detail_additionals` (
   PRIMARY KEY (`ID`),
   KEY `cm_detail_additionals_cmdetailid_foreign` (`CmDetailID`),
   CONSTRAINT `cm_detail_additionals_cmdetailid_foreign` FOREIGN KEY (`CmDetailID`) REFERENCES `cm_details` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.cm_detail_additionals: ~0 rows (approximately)
+-- Dumping data for table cm.cm_detail_additionals: ~4 rows (approximately)
 /*!40000 ALTER TABLE `cm_detail_additionals` DISABLE KEYS */;
+INSERT INTO `cm_detail_additionals` (`ID`, `CmDetailID`, `FileName`) VALUES
+	(17, 8, 'prrqg-114611-XVK.html'),
+	(18, 9, 'Hp4wB-071806-Fup.html'),
+	(19, 9, 'tT74S-071806-oUF.png'),
+	(20, 9, 'sOubl-071806-G3r.png');
 /*!40000 ALTER TABLE `cm_detail_additionals` ENABLE KEYS */;
 
 -- Dumping structure for table cm.levels
