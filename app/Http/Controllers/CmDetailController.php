@@ -42,6 +42,11 @@ class CmDetailController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'baslik' => 'required',
+            'aciklama' => 'required',
+        ]);
+        
         $cmDetail = new CmDetail;
         $cmDetail->CmID = $request->cmID;
         $cmDetail->Title = $request->baslik;

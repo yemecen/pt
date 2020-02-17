@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Cm;
 use App\CmDetail;
 use App\Type;
@@ -14,6 +13,7 @@ use App\User;
 use App\Stat;
 use App\Additional;
 use App\CmDetailAdditional;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CmController extends Controller
@@ -65,6 +65,11 @@ class CmController extends Controller
      */
     public function store(Request $request)
     {        
+        $request->validate([
+            'baslik' => 'required',
+            'aciklama' => 'required',
+        ]);
+
         $cm = new Cm;
         $cm->Title = $request->baslik;
         $cm->UserID = $request->userID;
