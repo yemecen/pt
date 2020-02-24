@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cm;
+use App\User;
 use App\CmDetail;
 use App\CmDetailAdditional;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class CmDetailController extends Controller
 {
@@ -85,6 +88,23 @@ class CmDetailController extends Controller
 
         Cm::whereId($request->cmID)->update($Cmdata);
         //
+
+        $cm = Cm::find($request->cmID);
+
+        if(isset($cm->Mail))
+        $emails = explode(",",$cm->Mail);
+
+        array_push($emails,User::find($cm->UserID)->email);
+        
+        array_push($emails,User::find($cm->ResponsibleUserID)->email);
+        
+        $details = [
+            'title' => $cm->Title,
+            'description' => $cmDetail->Description,
+            'no' => $request->cmID
+        ];
+
+        Mail::to(array_unique($emails))->send(new SendMail($details));
 
         return redirect()->route('cms.show',$request->cmID);
     }

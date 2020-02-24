@@ -15,6 +15,8 @@ use App\Additional;
 use App\CmDetailAdditional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class CmController extends Controller
 {
@@ -80,6 +82,7 @@ class CmController extends Controller
         $cm->SubSystemID = $request->altSistem;
         $cm->LevelID = $request->onemDerecesi;
         $cm->PrecedenceID = $request->oncelik;
+        $cm->Mail = $request->mail;
         $cm->StatID = 1;
         $cm->save();
 
@@ -101,6 +104,21 @@ class CmController extends Controller
                 $additional->save();
             }
         }
+        
+        if(isset($cm->Mail))
+        $emails = explode(",",$cm->Mail);
+
+        array_push($emails,User::find($cm->UserID)->email);
+        
+        array_push($emails,User::find($cm->ResponsibleUserID)->email);
+        
+        $details = [
+            'title' => $cm->Title,
+            'description' => $cm->Description,
+            'no' => $cm->id
+        ];
+
+        Mail::to(array_unique($emails))->send(new SendMail($details));
         
         return redirect()->route('cms.index');
     }

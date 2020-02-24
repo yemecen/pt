@@ -77,6 +77,11 @@
         <textarea class="form-control" id="aciklama" rows="3" name="aciklama">{{old('aciklama')}}</textarea>
     </div>
 
+    <div class="form-group">
+      <label for="mail">Mail Bilgilendirme</label>
+      <input type="text" class="form-control" id="mail" name="mail">
+    </div>
+
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="custom-file">
