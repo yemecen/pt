@@ -103,6 +103,7 @@
     </div>
 
     <div class="form-group">
+        <p></p>
         <img src="" class="img-thumbnail">
     </div>
 
