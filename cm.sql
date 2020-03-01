@@ -24,15 +24,21 @@ CREATE TABLE IF NOT EXISTS `additionals` (
   PRIMARY KEY (`ID`),
   KEY `additionals_cmid_foreign` (`CmID`),
   CONSTRAINT `additionals_cmid_foreign` FOREIGN KEY (`CmID`) REFERENCES `cms` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.additionals: ~4 rows (approximately)
+-- Dumping data for table cm.additionals: ~10 rows (approximately)
 /*!40000 ALTER TABLE `additionals` DISABLE KEYS */;
 INSERT INTO `additionals` (`ID`, `CmID`, `FileName`) VALUES
 	(24, 54, 'I1pnW-114204-GiR.html'),
 	(25, 54, 'sU9fN-114204-lm1.png'),
 	(26, 57, 'ISYle-071726-Mym.html'),
-	(27, 57, 'tjn0W-071726-9Vp.png');
+	(27, 57, 'tjn0W-071726-9Vp.png'),
+	(28, 61, 'dtp12-070623-RML.html'),
+	(29, 61, '3cy75-070623-PCs.png'),
+	(30, 61, 'NQb5P-070623-4FE.html'),
+	(31, 61, 'zkD7S-070623-GNq.png'),
+	(32, 61, 'DaLbk-070623-Q3r.png'),
+	(33, 61, '6ZLbT-070623-QtL.html');
 /*!40000 ALTER TABLE `additionals` ENABLE KEYS */;
 
 -- Dumping structure for table cm.authorizations
@@ -70,15 +76,19 @@ CREATE TABLE IF NOT EXISTS `cms` (
   KEY `cms_levelid_foreign` (`LevelID`),
   KEY `cms_precedenceid_foreign` (`PrecedenceID`),
   KEY `cms_statid_foreign` (`StatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.cms: ~4 rows (approximately)
+-- Dumping data for table cm.cms: ~8 rows (approximately)
 /*!40000 ALTER TABLE `cms` DISABLE KEYS */;
 INSERT INTO `cms` (`ID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, `TypeID`, `SystemID`, `SubSystemID`, `LevelID`, `PrecedenceID`, `StatID`, `Mail`, `created_at`, `updated_at`) VALUES
 	(54, 'test', 1, 1, 'test', 1, 1, 1, 1, 1, 2, NULL, '2020-02-16 11:42:04', '2020-02-16 11:46:11'),
 	(55, 'test 2', 1, 1, 'test 2', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 11:44:54', '2020-02-16 11:44:54'),
 	(56, 'test 3', 1, 4, 'test 3', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 14:34:10', '2020-02-16 14:34:10'),
-	(57, 'sfsafsf', 1, 3, 'asfasfasdfsd', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 19:17:26', '2020-02-16 19:18:06');
+	(57, 'sfsafsf', 1, 3, 'asfasfasdfsd', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 19:17:26', '2020-02-16 19:18:06'),
+	(58, 'mail test', 1, 1, 'mail test', 1, 1, 1, 1, 1, 1, NULL, '2020-02-22 23:27:25', '2020-02-22 23:27:25'),
+	(59, 'mail test', 1, 1, 'mail test', 1, 1, 1, 1, 1, 1, NULL, '2020-02-22 23:28:25', '2020-02-22 23:28:25'),
+	(60, 'mail test', 1, 1, 'gasadgasdgas', 1, 1, 1, 1, 1, 1, 'emecan.yasin@yandex.com,a@a.com', '2020-02-23 10:19:18', '2020-02-23 10:19:18'),
+	(61, 'mai', 1, 4, 'mail', 1, 1, 1, 1, 1, 1, 'yasin.emecen.mor@gmail.com', '2020-02-24 19:06:23', '2020-02-24 19:38:46');
 /*!40000 ALTER TABLE `cms` ENABLE KEYS */;
 
 -- Dumping structure for table cm.cm_details
@@ -115,13 +125,17 @@ CREATE TABLE IF NOT EXISTS `cm_details` (
   CONSTRAINT `cm_details_systemid_foreign` FOREIGN KEY (`SystemID`) REFERENCES `systems` (`ID`),
   CONSTRAINT `cm_details_typeid_foreign` FOREIGN KEY (`TypeID`) REFERENCES `types` (`ID`),
   CONSTRAINT `cm_details_userid_foreign` FOREIGN KEY (`UserID`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.cm_details: ~2 rows (approximately)
+-- Dumping data for table cm.cm_details: ~6 rows (approximately)
 /*!40000 ALTER TABLE `cm_details` DISABLE KEYS */;
 INSERT INTO `cm_details` (`ID`, `CmID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, `TypeID`, `SystemID`, `SubSystemID`, `LevelID`, `PrecedenceID`, `StatID`, `Mail`, `created_at`, `updated_at`) VALUES
 	(8, 54, 'eben', 1, 1, 'kapandı', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 11:46:11', '2020-02-16 11:46:11'),
-	(9, 57, 'xzcvxcvxcvxc', 1, 3, 'xzvxzcvzxcv', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 19:18:06', '2020-02-16 19:18:06');
+	(9, 57, 'xzcvxcvxcvxc', 1, 3, 'xzvxzcvzxcv', 1, 1, 1, 1, 1, 1, NULL, '2020-02-16 19:18:06', '2020-02-16 19:18:06'),
+	(10, 61, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1, 4, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1, 1, 1, 1, 1, 1, NULL, '2020-02-24 19:35:29', '2020-02-24 19:35:29'),
+	(11, 61, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1, 4, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1, 1, 1, 1, 1, 1, NULL, '2020-02-24 19:35:59', '2020-02-24 19:35:59'),
+	(12, 61, 'dddddddddddddddd', 1, 4, 'dddddddddddddd', 1, 1, 1, 1, 1, 1, NULL, '2020-02-24 19:37:42', '2020-02-24 19:37:42'),
+	(13, 61, 'xzvxcvxzcv', 1, 4, 'zxcvxzcvxzcv', 1, 1, 1, 1, 1, 1, NULL, '2020-02-24 19:38:46', '2020-02-24 19:38:46');
 /*!40000 ALTER TABLE `cm_details` ENABLE KEYS */;
 
 -- Dumping structure for table cm.cm_detail_additionals
@@ -289,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.users: ~3 rows (approximately)
+-- Dumping data for table cm.users: ~4 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'Yazılım Destek', 'y.emecen@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', NULL, '2020-02-05 22:56:01', '2020-02-05 22:56:03'),
