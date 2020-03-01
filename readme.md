@@ -21,5 +21,3 @@
 ### Filtreleme
 
 ![selectsearch](https://github.com/yemecen/cm/blob/master/select-search.png)
-
-Demo https://drive.google.com/open?id=1sw8ZcZYcna1447vVs1r_Re_PEI28djDN
