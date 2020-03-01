@@ -1,6 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
+{{--Form--}}
+@include('layouts.partials.selectform')
+{{--Form--}}
+
 <table class="table">
     <thead>
       <tr>

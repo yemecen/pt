@@ -38,8 +38,12 @@ class CmController extends Controller
     public function index()
     {
         $cms = Cm::all();
+        $precedences = Precedence::all();
+        $subSystems = SubSystem::all();
+        $stats = Stat::all();
+        $users = User::all();
         
-        return view('cm.index', compact('cms'));
+        return view('cm.index', compact('cms','precedences','subSystems','stats','users'));
     }
 
     /**
@@ -184,20 +188,57 @@ class CmController extends Controller
     {      
         $cms = is_numeric($request->search) ? Cm::where('ID','=',(int)$request->search)->get() : Cm::where('Title', 'like', "%".$request->search."%")->get();
         
-        return view('cm.index', compact('cms'));
+        $precedences = Precedence::all();
+        $subSystems = SubSystem::all();
+        $stats = Stat::all();
+        $users = User::all();
+        
+        return view('cm.index', compact('cms','precedences','subSystems','stats','users','selectedValue'));
     }
     
     public function open()
     {      
         $cms = Cm::where('ResponsibleUserID','=',Auth::user()->id)->where('StatID','<>',2)->get();
         
-        return view('cm.index', compact('cms'));
+        $precedences = Precedence::all();
+        $subSystems = SubSystem::all();
+        $stats = Stat::all();
+        $users = User::all();
+        
+        return view('cm.index', compact('cms','precedences','subSystems','stats','users','selectedValue'));
     }
     
     public function close()
     {      
         $cms = Cm::where('ResponsibleUserID','=',Auth::user()->id)->where('StatID','=',2)->get();
         
-        return view('cm.index', compact('cms'));
+        $precedences = Precedence::all();
+        $subSystems = SubSystem::all();
+        $stats = Stat::all();
+        $users = User::all();
+        
+        return view('cm.index', compact('cms','precedences','subSystems','stats','users','selectedValue'));
+    }
+
+    public function selectSearch(Request $request)
+    {      
+        $selectedInputValue = $request->all();
+
+        $selectedValue = array();
+
+        foreach ($selectedInputValue as $key => $value) {
+            if ( isset($value) && $key != '_token' )
+                $selectedValue += [$key => $value] ;
+        }
+        
+        
+        $cms = Cm::where($selectedValue)->get();
+        //['UserID' => '1', 'ResponsibleUserID' => '4']
+        $precedences = Precedence::all();
+        $subSystems = SubSystem::all();
+        $stats = Stat::all();
+        $users = User::all();
+        
+        return view('cm.index', compact('cms','precedences','subSystems','stats','users','selectedValue'));
     }
 }

@@ -21,7 +21,28 @@ $(document).ready(function(){
         
         });
 
-    });//change
+    });
+
+
+    $('#olusturan').change(function () {
+      this.form.submit();
+    });
+
+    $('#modul').change(function () {
+      this.form.submit();
+    });
+
+    $('#sorumlu').change(function () {
+      this.form.submit();
+    });
+
+    $('#oncelik').change(function () {
+      this.form.submit();
+    });
+
+    $('#durum').change(function () {
+      this.form.submit();
+    });
 
 })
 </script>
