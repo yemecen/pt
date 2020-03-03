@@ -21,5 +21,6 @@ Route::get('/cm/open','CmController@open')->name('cms.open');
 
 Route::resource('cmDetail','CmDetailController');
 
+Route::resource('systems','SystemController');
 
 Auth::routes();
