@@ -25,4 +25,6 @@ Route::resource('systems','SystemController');
 
 Route::resource('types','TypeController');
 
+Route::resource('levels','LevelController');
+
 Auth::routes();
