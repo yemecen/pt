@@ -27,4 +27,6 @@ Route::resource('types','TypeController');
 
 Route::resource('levels','LevelController');
 
+Route::resource('stats','StatController');
+
 Auth::routes();
