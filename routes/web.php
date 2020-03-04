@@ -23,4 +23,6 @@ Route::resource('cmDetail','CmDetailController');
 
 Route::resource('systems','SystemController');
 
+Route::resource('types','TypeController');
+
 Auth::routes();
