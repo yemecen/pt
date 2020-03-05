@@ -29,4 +29,6 @@ Route::resource('levels','LevelController');
 
 Route::resource('stats','StatController');
 
+Route::resource('precedences','PrecedenceController');
+
 Auth::routes();
