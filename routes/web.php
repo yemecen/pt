@@ -23,6 +23,8 @@ Route::resource('cmDetail','CmDetailController');
 
 Route::resource('systems','SystemController');
 
+Route::resource('subsystems','SubSystemController');
+
 Route::resource('types','TypeController');
 
 Route::resource('levels','LevelController');

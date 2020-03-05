@@ -9,6 +9,7 @@
     <div class="list-group">
       <a href="{{route('types.index')}}" class="list-group-item ">Tip</a>             
       <a href="{{route('systems.index')}}" class="list-group-item ">Sistem</a>             
+      <a href="{{route('subsystems.index')}}" class="list-group-item ">Alt Sistem</a>             
       <a href="{{route('levels.index')}}" class="list-group-item ">Önem Derecesi</a>             
       <a href="{{route('stats.index')}}" class="list-group-item ">Durum</a>         
       <a href="{{route('precedences.index')}}" class="list-group-item ">Öncelik</a>         
