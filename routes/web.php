@@ -33,4 +33,7 @@ Route::resource('stats','StatController');
 
 Route::resource('precedences','PrecedenceController');
 
+Route::resource('users','UserController');
+Route::any('users/updateAllUser','UserController@updateAllUser')->name('users.updateAllUser');
+
 Auth::routes();
