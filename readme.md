@@ -21,3 +21,7 @@
 ### Filtreleme
 
 ![selectsearch](https://github.com/yemecen/cm/blob/master/select-search.png)
+
+### Yönetim
+
+![yonetim](https://github.com/yemecen/cm/blob/master/yonetim.png)

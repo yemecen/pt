@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `additionals` (
   PRIMARY KEY (`ID`),
   KEY `additionals_cmid_foreign` (`CmID`),
   CONSTRAINT `additionals_cmid_foreign` FOREIGN KEY (`CmID`) REFERENCES `cms` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.additionals: ~10 rows (approximately)
+-- Dumping data for table cm.additionals: ~16 rows (approximately)
 /*!40000 ALTER TABLE `additionals` DISABLE KEYS */;
 INSERT INTO `additionals` (`ID`, `CmID`, `FileName`) VALUES
 	(24, 54, 'I1pnW-114204-GiR.html'),
@@ -38,7 +38,14 @@ INSERT INTO `additionals` (`ID`, `CmID`, `FileName`) VALUES
 	(30, 61, 'NQb5P-070623-4FE.html'),
 	(31, 61, 'zkD7S-070623-GNq.png'),
 	(32, 61, 'DaLbk-070623-Q3r.png'),
-	(33, 61, '6ZLbT-070623-QtL.html');
+	(33, 61, '6ZLbT-070623-QtL.html'),
+	(34, 62, '0UOmQ-031301-cP4.png'),
+	(35, 62, 'wOrEY-031301-PTi.html'),
+	(36, 62, 'HhgS5-031301-853.png'),
+	(37, 62, 'B7jpT-031301-jRn.png'),
+	(38, 62, 'JYvAK-031301-AkA.html'),
+	(39, 63, 'o8co8-051100-Fjs.html'),
+	(40, 63, 'UwgHO-051100-4hA.png');
 /*!40000 ALTER TABLE `additionals` ENABLE KEYS */;
 
 -- Dumping structure for table cm.authorizations
@@ -76,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `cms` (
   KEY `cms_levelid_foreign` (`LevelID`),
   KEY `cms_precedenceid_foreign` (`PrecedenceID`),
   KEY `cms_statid_foreign` (`StatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table cm.cms: ~8 rows (approximately)
 /*!40000 ALTER TABLE `cms` DISABLE KEYS */;
@@ -88,7 +95,9 @@ INSERT INTO `cms` (`ID`, `Title`, `UserID`, `ResponsibleUserID`, `Description`, 
 	(58, 'mail test', 1, 1, 'mail test', 1, 1, 1, 1, 1, 1, NULL, '2020-02-22 23:27:25', '2020-02-22 23:27:25'),
 	(59, 'mail test', 1, 1, 'mail test', 1, 1, 1, 1, 1, 1, NULL, '2020-02-22 23:28:25', '2020-02-22 23:28:25'),
 	(60, 'mail test', 1, 1, 'gasadgasdgas', 1, 1, 1, 1, 1, 1, 'emecan.yasin@yandex.com,a@a.com', '2020-02-23 10:19:18', '2020-02-23 10:19:18'),
-	(61, 'mai', 1, 4, 'mail', 1, 1, 1, 1, 1, 1, 'yasin.emecen.mor@gmail.com', '2020-02-24 19:06:23', '2020-02-24 19:38:46');
+	(61, 'mai', 1, 4, 'mail', 1, 1, 1, 1, 1, 1, 'yasin.emecen.mor@gmail.com', '2020-02-24 19:06:23', '2020-02-24 19:38:46'),
+	(62, 'Test', 1, 1, 'test', 1, 1, 1, 1, 1, 1, 'y.emecen@gmail.com', '2020-03-01 15:13:01', '2020-03-01 15:13:01'),
+	(63, 'Test Başlık', 1, 1, 'Test açıklama', 1, 3, 4, 1, 1, 1, 'y.emecen@gmail.com', '2020-03-01 17:11:00', '2020-03-01 17:11:00');
 /*!40000 ALTER TABLE `cms` ENABLE KEYS */;
 
 -- Dumping structure for table cm.cm_details
@@ -162,13 +171,15 @@ CREATE TABLE IF NOT EXISTS `levels` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.levels: ~2 rows (approximately)
+-- Dumping data for table cm.levels: ~4 rows (approximately)
 /*!40000 ALTER TABLE `levels` DISABLE KEYS */;
 INSERT INTO `levels` (`ID`, `Name`) VALUES
 	(1, 'Normal'),
-	(2, 'Kritik');
+	(2, 'Kritik'),
+	(3, 'önem'),
+	(5, 'testxxx');
 /*!40000 ALTER TABLE `levels` ENABLE KEYS */;
 
 -- Dumping structure for table cm.migrations
@@ -216,13 +227,14 @@ CREATE TABLE IF NOT EXISTS `precedences` (
   `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Badge` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.precedences: ~2 rows (approximately)
+-- Dumping data for table cm.precedences: ~4 rows (approximately)
 /*!40000 ALTER TABLE `precedences` DISABLE KEYS */;
 INSERT INTO `precedences` (`ID`, `Name`, `Badge`) VALUES
 	(1, 'Düşük', 'secondary'),
-	(2, 'Normal', 'primary');
+	(2, 'Normal', 'success'),
+	(3, 'öncelik', 'warning');
 /*!40000 ALTER TABLE `precedences` ENABLE KEYS */;
 
 -- Dumping structure for table cm.stats
@@ -231,16 +243,18 @@ CREATE TABLE IF NOT EXISTS `stats` (
   `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Badge` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.stats: ~5 rows (approximately)
+-- Dumping data for table cm.stats: ~7 rows (approximately)
 /*!40000 ALTER TABLE `stats` DISABLE KEYS */;
 INSERT INTO `stats` (`ID`, `Name`, `Badge`) VALUES
 	(1, 'Oluşturuldu', 'success'),
 	(2, 'Kapalı', 'secondary'),
 	(3, 'İncelendi', 'info'),
 	(4, 'Yapıldı', 'info'),
-	(5, 'Yayınladı', 'danger');
+	(5, 'Yayınladı', 'danger'),
+	(7, 'sucxxxxxx', 'warning'),
+	(9, 'dddd', 'dark');
 /*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 
 -- Dumping structure for table cm.sub_systems
@@ -251,14 +265,15 @@ CREATE TABLE IF NOT EXISTS `sub_systems` (
   PRIMARY KEY (`ID`),
   KEY `sub_systems_systemid_foreign` (`SystemID`),
   CONSTRAINT `sub_systems_systemid_foreign` FOREIGN KEY (`SystemID`) REFERENCES `systems` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.sub_systems: ~3 rows (approximately)
+-- Dumping data for table cm.sub_systems: ~4 rows (approximately)
 /*!40000 ALTER TABLE `sub_systems` DISABLE KEYS */;
 INSERT INTO `sub_systems` (`ID`, `SystemID`, `Name`) VALUES
-	(1, 1, 'Ruhsat'),
-	(2, 1, 'İmar'),
-	(3, 2, 'Satın Alma');
+	(1, 1, 'modül 1'),
+	(2, 1, 'modül 2'),
+	(3, 2, 'modül 3'),
+	(4, 4, 'modül 4');
 /*!40000 ALTER TABLE `sub_systems` ENABLE KEYS */;
 
 -- Dumping structure for table cm.systems
@@ -266,13 +281,18 @@ CREATE TABLE IF NOT EXISTS `systems` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.systems: ~2 rows (approximately)
+-- Dumping data for table cm.systems: ~8 rows (approximately)
 /*!40000 ALTER TABLE `systems` DISABLE KEYS */;
 INSERT INTO `systems` (`ID`, `Name`) VALUES
-	(1, 'GG'),
-	(2, 'Gazi Emir');
+	(1, 'Sistem 1'),
+	(2, 'Sistem 2'),
+	(3, 'Deneme Sistem'),
+	(4, 'testxxxxxxxxxxx'),
+	(5, 'test 3'),
+	(6, 'test4'),
+	(7, 'test 4');
 /*!40000 ALTER TABLE `systems` ENABLE KEYS */;
 
 -- Dumping structure for table cm.types
@@ -280,13 +300,15 @@ CREATE TABLE IF NOT EXISTS `types` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table cm.types: ~2 rows (approximately)
+-- Dumping data for table cm.types: ~4 rows (approximately)
 /*!40000 ALTER TABLE `types` DISABLE KEYS */;
 INSERT INTO `types` (`ID`, `Name`) VALUES
 	(1, 'Hata'),
-	(2, 'Değişiklik');
+	(2, 'Değişiklik'),
+	(3, 'tegfadewgdasgadxxx'),
+	(4, 'gfdsgsdagasagsd');
 /*!40000 ALTER TABLE `types` ENABLE KEYS */;
 
 -- Dumping structure for table cm.users
@@ -296,6 +318,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_admin` bit(1) NOT NULL DEFAULT b'0',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -305,11 +328,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Dumping data for table cm.users: ~4 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Yazılım Destek', 'y.emecen@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', NULL, '2020-02-05 22:56:01', '2020-02-05 22:56:03'),
-	(2, 'Yazılım Destek 2', 'y.emecen2@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', NULL, '2020-02-05 22:56:01', '2020-02-05 22:56:03'),
-	(3, 'Yazılım Destek 3', 'y.emecen3@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', NULL, '2020-02-05 22:56:01', '2020-02-05 22:56:03'),
-	(4, 'yasinyandex', 'emecan.yasin@yandex.com', NULL, '$2y$10$gXnGKo4WA8fQ5npBYKbdLudHr2LCpwHJkwqQpcHxQKN1ou23hJh5S', NULL, '2020-02-09 13:18:05', '2020-02-09 13:18:05');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `is_admin`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'Yazılım Destek', 'y.emecen@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', b'1', NULL, '2020-02-05 22:56:01', '2020-03-08 14:52:18'),
+	(2, 'Yazılım Destek 2', 'y.emecen2@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', b'0', NULL, '2020-02-05 22:56:01', '2020-03-08 14:59:41'),
+	(3, 'Yazılım Destek 3', 'y.emecen3@gmail.com', NULL, '$2y$10$VqGFsDIJigAwU0UfeuPBnepwb6xI60uju.SiF1pFKXFnXIIp1eLC2', b'0', NULL, '2020-02-05 22:56:01', '2020-03-08 14:59:41'),
+	(4, 'yasinyandex', 'emecan.yasin@yandex.com', NULL, '$2y$10$gXnGKo4WA8fQ5npBYKbdLudHr2LCpwHJkwqQpcHxQKN1ou23hJh5S', b'0', NULL, '2020-02-09 13:18:05', '2020-03-08 14:59:41');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table cm.user_authorizations
